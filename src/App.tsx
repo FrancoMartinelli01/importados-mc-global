@@ -42,6 +42,7 @@ const App = () => {
               </Routes>
             </main>
             <Footer />
+            <WhatsAppFloat />
           </div>
         </BrowserRouter>
       </TooltipProvider>
