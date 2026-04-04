@@ -164,6 +164,15 @@ export default function ProductDetail() {
             >
               Comprar ahora
             </button>
+            <a
+              href={`https://wa.me/541138086005?text=Hola%20Importados%20MC!%20Quiero%20consultar%20sobre%20el%20producto%3A%20${encodeURIComponent(product.name)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-green-500 py-3.5 text-sm font-semibold text-green-500 hover:bg-green-500 hover:text-white transition-base"
+            >
+              <MessageCircle className="h-4 w-4" />
+              Consultar por WhatsApp
+            </a>
           </div>
         </div>
       </div>
