@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { Check, Star, Minus, Plus, ShoppingCart, ChevronRight } from 'lucide-react';
+import { Check, Star, Minus, Plus, ShoppingCart, ChevronRight, MessageCircle } from 'lucide-react';
 import { PRODUCTS, formatPrice, getDiscountPercent } from '@/data/products';
 import { useCartStore } from '@/store/cartStore';
 
