@@ -14,7 +14,7 @@ export default function Hero() {
       >
         {/* Overlay */}
         <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(109,40,217,0.4) 100%)' }} />
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
           {/* Pill badge */}
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm text-white">
             <span className="relative flex h-2 w-2">
