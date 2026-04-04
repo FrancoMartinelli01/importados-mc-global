@@ -7,11 +7,13 @@ export default function Hero() {
       <section
         className="relative overflow-hidden px-4 py-24 md:py-36"
         style={{
-          backgroundColor: '#0A0A0A',
-          backgroundImage:
-            'radial-gradient(ellipse at 0% 0%, rgba(124,58,237,0.15) 0%, transparent 50%), radial-gradient(ellipse at 100% 100%, rgba(124,58,237,0.1) 0%, transparent 50%)',
+          backgroundImage: 'url(https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1920&q=80)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       >
+        {/* Overlay */}
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(109,40,217,0.4) 100%)' }} />
         <div className="mx-auto max-w-4xl text-center">
           {/* Pill badge */}
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm text-white">
