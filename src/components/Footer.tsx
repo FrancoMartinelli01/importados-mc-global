@@ -8,9 +8,8 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <Package className="h-6 w-6 text-violet-400" />
-              <span className="text-lg font-bold">Importados MC</span>
+            <div className="mb-4">
+              <img src="/logo.png" alt="Importados MC" className="h-10 w-auto" />
             </div>
             <p className="text-sm text-gray-400 mb-4">
               Tecnología, indumentaria y accesorios importados de las mejores marcas del mundo.
