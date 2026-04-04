@@ -29,10 +29,9 @@ export default function Catalogo() {
     });
   }, [selectedCategory, priceRange, stockOnly, searchTerm]);
 
-  // Sync categoryParam
-  useState(() => {
+  useEffect(() => {
     if (categoryParam) setSelectedCategory(categoryParam);
-  });
+  }, [categoryParam]);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
