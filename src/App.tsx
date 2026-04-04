@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Navbar from "@/components/Navbar";
 import CartDrawer from "@/components/CartDrawer";
 import Footer from "@/components/Footer";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Home from "@/pages/Home";
 import Catalogo from "@/pages/Catalogo";
 import ProductDetail from "@/pages/ProductDetail";
