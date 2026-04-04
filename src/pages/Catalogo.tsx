@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SlidersHorizontal } from 'lucide-react';
 import { PRODUCTS } from '@/data/products';
@@ -29,10 +29,9 @@ export default function Catalogo() {
     });
   }, [selectedCategory, priceRange, stockOnly, searchTerm]);
 
-  // Sync categoryParam
-  useState(() => {
+  useEffect(() => {
     if (categoryParam) setSelectedCategory(categoryParam);
-  });
+  }, [categoryParam]);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
