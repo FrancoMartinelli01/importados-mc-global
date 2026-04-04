@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
+import { MessageCircle } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import { SlidersHorizontal } from 'lucide-react';
 import { PRODUCTS } from '@/data/products';
@@ -69,8 +70,21 @@ export default function Catalogo() {
             ))}
           </div>
           {filtered.length === 0 && (
-            <div className="py-20 text-center text-muted-foreground">
-              No se encontraron productos con los filtros seleccionados.
+            <div className="py-20 text-center">
+              <p className="text-muted-foreground">No se encontraron productos con los filtros seleccionados.</p>
+              <div className="mt-6 space-y-2">
+                <p className="text-lg font-bold text-foreground">¿No encontrás lo que buscás?</p>
+                <p className="text-sm text-muted-foreground">Consultanos y lo conseguimos por vos</p>
+                <a
+                  href="https://wa.me/541138086005?text=Hola%20Importados%20MC!%20Estoy%20buscando%20un%20producto%20que%20no%20encuentro%20en%20el%20cat%C3%A1logo.%20%C2%BFPod%C3%A9s%20ayudarme%3F"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center gap-2 rounded-xl bg-green-500 px-6 py-3 text-sm font-semibold text-white hover:bg-green-600 transition-base"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  Consultar por WhatsApp
+                </a>
+              </div>
             </div>
           )}
         </div>
