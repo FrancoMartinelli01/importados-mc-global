@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
+import { MessageCircle } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import { SlidersHorizontal } from 'lucide-react';
 import { PRODUCTS } from '@/data/products';
