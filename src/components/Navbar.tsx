@@ -28,7 +28,7 @@ export default function Navbar({ onCartOpen }: { onCartOpen: () => void }) {
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <img src="/logo.png" alt="Importados MC" className="h-12 w-auto" />
+          <img src="/logo.png" alt="Importados MC" className="h-12 w-auto bg-violet-600 rounded-xl p-1" />
         </Link>
 
         {/* Search - desktop */}
