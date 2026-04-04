@@ -91,6 +91,7 @@ export default function Navbar({ onCartOpen }: { onCartOpen: () => void }) {
                 onChange={(e) => setQuery(e.target.value)}
                 className="h-9 w-full rounded-full border border-border bg-secondary pl-10 pr-4 text-sm outline-none focus:ring-2 focus:ring-primary/30"
               />
+              <SearchDropdown />
             </div>
           </form>
           <nav className="flex flex-col gap-2">
