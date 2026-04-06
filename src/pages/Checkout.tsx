@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Shield, Loader2, Zap } from 'lucide-react';
+import { toast } from 'sonner';
 import { useCartStore } from '@/store/cartStore';
 import { formatPrice } from '@/data/products';
 
@@ -20,7 +21,6 @@ type CheckoutForm = z.infer<typeof checkoutSchema>;
 
 export default function Checkout() {
   const { items, totalPrice, clearCart } = useCartStore();
-  const navigate = useNavigate();
   const [processing, setProcessing] = useState(false);
   const total = totalPrice();
   const shipping = total >= 100000 ? 0 : 5990;
@@ -31,19 +31,45 @@ export default function Checkout() {
 
   if (items.length === 0) return <Navigate to="/catalogo" />;
 
-  const onSubmit = () => {
+  const onSubmit = async (data: CheckoutForm) => {
     setProcessing(true);
-    setTimeout(() => {
+    try {
+      const res = await fetch('/api/create-preference', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: items.map((i) => ({
+            id: i.product.id,
+            name: i.product.name,
+            qty: i.qty,
+            price: i.product.price,
+          })),
+          payer: {
+            name: data.nombre,
+            email: data.email,
+            phone: data.telefono,
+            address: data.direccion,
+            city: data.ciudad,
+            province: data.provincia,
+          },
+        }),
+      });
+
+      if (!res.ok) throw new Error('API error');
+
+      const result = await res.json();
       clearCart();
-      navigate('/orden/exitosa');
-    }, 2000);
+      window.location.href = result.init_point;
+    } catch {
+      setProcessing(false);
+      toast.error('Hubo un problema al procesar el pago. Intentá de nuevo.');
+    }
   };
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8">
       <h1 className="mb-8 text-2xl font-bold text-foreground">Checkout</h1>
 
-      {/* Processing overlay */}
       {processing && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60 backdrop-blur-sm">
           <div className="flex flex-col items-center gap-4 rounded-2xl bg-background p-8 shadow-2xl">
@@ -54,7 +80,6 @@ export default function Checkout() {
       )}
 
       <form onSubmit={handleSubmit(onSubmit)} className="grid gap-8 lg:grid-cols-5">
-        {/* Form */}
         <div className="lg:col-span-3 space-y-4">
           <h2 className="text-lg font-semibold text-foreground">Datos de envío</h2>
           {([
@@ -77,7 +102,6 @@ export default function Checkout() {
           ))}
         </div>
 
-        {/* Summary */}
         <div className="lg:col-span-2">
           <div className="sticky top-24 rounded-2xl border border-border bg-card p-6 space-y-4">
             <h2 className="text-lg font-semibold text-foreground">Resumen de orden</h2>
@@ -112,7 +136,8 @@ export default function Checkout() {
 
             <button
               type="submit"
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-sm font-semibold text-primary-foreground hover:bg-violet-700 transition-base"
+              disabled={processing}
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-sm font-semibold text-primary-foreground hover:bg-violet-700 transition-base disabled:opacity-50"
             >
               <Zap className="h-4 w-4" />
               Pagar con Mercado Pago
