@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero';
 import ProductCard from '@/components/ProductCard';
+import ServicesSection from '@/components/ServicesSection';
 import { PRODUCTS } from '@/data/products';
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
           ))}
         </div>
       </section>
+      <ServicesSection />
     </>
   );
 }
