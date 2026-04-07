@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Check, Star, Minus, Plus, ShoppingCart, ChevronRight, MessageCircle } from 'lucide-react';
 import { PRODUCTS, formatPrice, getDiscountPercent } from '@/data/products';
 import { useCartStore } from '@/store/cartStore';
+import SEO from '@/components/SEO';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -41,6 +42,7 @@ export default function ProductDetail() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
+      <SEO title={`${product.name} | Importados MC`} description={product.description} image={product.imageUrl} url={`https://importadosmc.com.ar/producto/${product.id}`} />
       {/* Breadcrumb */}
       <nav className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
         <Link to="/" className="hover:text-foreground transition-base">Inicio</Link>

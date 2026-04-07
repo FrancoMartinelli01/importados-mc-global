@@ -7,6 +7,7 @@ import { Shield, Loader2, Zap } from 'lucide-react';
 import { toast } from 'sonner';
 import { useCartStore } from '@/store/cartStore';
 import { formatPrice } from '@/data/products';
+import SEO from '@/components/SEO';
 
 const checkoutSchema = z.object({
   nombre: z.string().trim().min(1, 'Requerido').max(100),
@@ -68,6 +69,7 @@ export default function Checkout() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8">
+      <SEO title="Checkout | Importados MC" />
       <h1 className="mb-8 text-2xl font-bold text-foreground">Checkout</h1>
 
       {processing && (

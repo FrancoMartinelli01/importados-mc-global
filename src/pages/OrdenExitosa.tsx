@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 export default function OrdenExitosa() {
   const orderNumber = `#MC-${Math.floor(1000 + Math.random() * 9000)}`;
 
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
+      <SEO title="¡Compra confirmada! | Importados MC" />
       <div className="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-accent">
         <CheckCircle className="h-12 w-12 text-primary" />
       </div>
