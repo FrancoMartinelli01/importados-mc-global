@@ -35,10 +35,10 @@ export default function Footer() {
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider">Información</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-white transition-base">Sobre nosotros</a></li>
-              <li><a href="#" className="hover:text-white transition-base">Cómo comprar</a></li>
-              <li><a href="#" className="hover:text-white transition-base">Envíos</a></li>
-              <li><a href="#" className="hover:text-white transition-base">Devoluciones</a></li>
+              <li><Link to="/sobre-nosotros" className="hover:text-white transition-base">Sobre nosotros</Link></li>
+              <li><Link to="/como-comprar" className="hover:text-white transition-base">Cómo comprar</Link></li>
+              <li><Link to="/envios" className="hover:text-white transition-base">Envíos</Link></li>
+              <li><Link to="/devoluciones" className="hover:text-white transition-base">Devoluciones</Link></li>
             </ul>
           </div>
 

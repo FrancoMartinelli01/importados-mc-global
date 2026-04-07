@@ -14,6 +14,10 @@ import ProductDetail from "@/pages/ProductDetail";
 import Checkout from "@/pages/Checkout";
 import OrdenExitosa from "@/pages/OrdenExitosa";
 import OrdenFallida from "@/pages/OrdenFallida";
+import SobreNosotros from "@/pages/SobreNosotros";
+import ComoComprar from "@/pages/ComoComprar";
+import Envios from "@/pages/Envios";
+import Devoluciones from "@/pages/Devoluciones";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +42,10 @@ const App = () => {
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/orden/exitosa" element={<OrdenExitosa />} />
                 <Route path="/orden/fallida" element={<OrdenFallida />} />
+                <Route path="/sobre-nosotros" element={<SobreNosotros />} />
+                <Route path="/como-comprar" element={<ComoComprar />} />
+                <Route path="/envios" element={<Envios />} />
+                <Route path="/devoluciones" element={<Devoluciones />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
