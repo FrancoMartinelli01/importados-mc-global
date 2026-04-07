@@ -491,3 +491,10 @@ export const PRODUCTS: Product[] = [
     reviews: 8,
   },
 ];
+export const formatPrice = (price: number): string => {
+  return new Intl.NumberFormat('es-AR', {
+    style: 'currency',
+    currency: 'ARS',
+    maximumFractionDigits: 0,
+  }).format(price);
+};
