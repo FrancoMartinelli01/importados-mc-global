@@ -15,9 +15,8 @@ export default function Footer() {
               Tecnología, indumentaria y accesorios importados de las mejores marcas del mundo.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="p-2 rounded-full hover:bg-white/10 transition-base"><Instagram className="h-4 w-4" /></a>
-              <a href="#" className="p-2 rounded-full hover:bg-white/10 transition-base"><Twitter className="h-4 w-4" /></a>
-              <a href="#" className="p-2 rounded-full hover:bg-white/10 transition-base"><Facebook className="h-4 w-4" /></a>
+              <a href="https://instagram.com/importados.mc_" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-white/10 transition-base"><Instagram className="h-4 w-4" /></a>
+              <a href="https://www.facebook.com/share/1FTihkWveB/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-white/10 transition-base"><Facebook className="h-4 w-4" /></a>
             </div>
           </div>
 
