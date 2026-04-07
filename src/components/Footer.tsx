@@ -45,9 +45,9 @@ export default function Footer() {
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider">Contacto</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> WhatsApp</li>
-              <li className="flex items-center gap-2"><Instagram className="h-4 w-4" /> @importadosmc</li>
-              <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> info@importadosmc.com</li>
+              <li><a href="https://wa.me/5491138086005" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-base"><Phone className="h-4 w-4" /> +54 9 11 3808-6005</a></li>
+              <li><a href="https://instagram.com/importados.mc_" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-base"><Instagram className="h-4 w-4" /> @importados.mc_</a></li>
+              <li><a href="mailto:importadosmc.arg@gmail.com" className="flex items-center gap-2 hover:text-white transition-base"><Mail className="h-4 w-4" /> importadosmc.arg@gmail.com</a></li>
             </ul>
           </div>
         </div>
