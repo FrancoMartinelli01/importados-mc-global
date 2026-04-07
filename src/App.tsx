@@ -54,6 +54,7 @@ const App = () => {
             <WhatsAppFloat />
           </div>
         </BrowserRouter>
+        <Analytics />
       </TooltipProvider>
     </QueryClientProvider>
   );
