@@ -498,3 +498,6 @@ export const formatPrice = (price: number): string => {
     maximumFractionDigits: 0,
   }).format(price);
 };
+export const getDiscountPercent = (price: number, originalPrice: number): number => {
+  return Math.round((1 - price / originalPrice) * 100);
+};
