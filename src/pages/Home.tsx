@@ -1,3 +1,4 @@
+import SEO from '@/components/SEO';
 import Hero from '@/components/Hero';
 import ProductCard from '@/components/ProductCard';
 import ServicesSection from '@/components/ServicesSection';
@@ -8,6 +9,7 @@ export default function Home() {
 
   return (
     <>
+      <SEO title="Importados MC | Productos importados desde USA a Argentina" />
       <Hero />
       <section className="mx-auto max-w-7xl px-4 py-16">
         <h2 className="mb-2 text-3xl font-bold text-foreground">Destacados</h2>

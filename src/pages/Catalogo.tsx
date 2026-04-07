@@ -6,6 +6,7 @@ import { PRODUCTS } from '@/data/products';
 import { useSearchStore } from '@/store/searchStore';
 import ProductCard from '@/components/ProductCard';
 import FilterSidebar from '@/components/FilterSidebar';
+import SEO from '@/components/SEO';
 
 export default function Catalogo() {
   const [searchParams] = useSearchParams();
@@ -36,6 +37,7 @@ export default function Catalogo() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
+      <SEO title="Catálogo | Importados MC" />
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-foreground">Catálogo</h1>
