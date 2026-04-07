@@ -59,6 +59,20 @@ export default function Checkout() {
       if (!res.ok) throw new Error('API error');
 
       const result = await res.json();
+
+      localStorage.setItem('mc_last_order', JSON.stringify({
+        orderNumber: `MC-${Math.floor(1000 + Math.random() * 9000)}`,
+        customerName: data.nombre,
+        customerEmail: data.email,
+        customerPhone: data.telefono,
+        address: data.direccion,
+        city: data.ciudad,
+        province: data.provincia,
+        items: items.map((i) => `${i.product.name} x${i.qty}`).join(', '),
+        total: total + shipping,
+        date: new Date().toLocaleDateString('es-AR'),
+      }));
+
       clearCart();
       window.location.href = result.init_point;
     } catch {
