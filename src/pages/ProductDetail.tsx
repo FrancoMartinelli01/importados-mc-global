@@ -4,6 +4,7 @@ import { Check, Star, Minus, Plus, ShoppingCart, ChevronRight, MessageCircle } f
 import { PRODUCTS, formatPrice, getDiscountPercent } from '@/data/products';
 import { useCartStore } from '@/store/cartStore';
 import SEO from '@/components/SEO';
+import ProductGallery from '@/components/ProductGallery';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -55,9 +56,10 @@ export default function ProductDetail() {
       <div className="grid gap-8 lg:grid-cols-5">
         {/* Image */}
         <div className="lg:col-span-3">
-          <div className="overflow-hidden rounded-2xl bg-secondary">
-            <img src={product.imageUrl} alt={product.name} className="w-full aspect-square object-cover" />
-          </div>
+          <ProductGallery
+            images={product.images && product.images.length > 0 ? product.images : [product.imageUrl]}
+            name={product.name}
+          />
         </div>
 
         {/* Info */}
