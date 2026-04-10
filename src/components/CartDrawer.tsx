@@ -1,12 +1,20 @@
-import { X, Minus, Plus, ShoppingCart } from 'lucide-react';
+import { useMemo } from 'react';
+import { X, Minus, Plus, ShoppingCart, PlusCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useCartStore } from '@/store/cartStore';
-import { formatPrice } from '@/data/products';
+import { PRODUCTS, formatPrice } from '@/data/products';
 
 export default function CartDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const { items, removeItem, updateQty, totalItems, totalPrice } = useCartStore();
+  const { items, removeItem, updateQty, totalItems, totalPrice, addItem } = useCartStore();
   const navigate = useNavigate();
   const total = totalPrice();
+
+  const suggestions = useMemo(() => {
+    if (items.length === 0) return [];
+    const lastCat = items[items.length - 1].product.category;
+    const cartIds = new Set(items.map((i) => i.product.id));
+    return PRODUCTS.filter((p) => p.category === lastCat && !cartIds.has(p.id) && p.stock > 0).slice(0, 3);
+  }, [items]);
 
   if (!open) return null;
 
@@ -73,6 +81,31 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
                   </div>
                 </div>
               ))}
+            </div>
+          )}
+
+          {/* Cross-sell suggestions */}
+          {items.length > 0 && suggestions.length > 0 && (
+            <div className="mt-6 border-t border-border pt-4">
+              <h3 className="mb-3 text-sm font-bold text-foreground">Completá tu look</h3>
+              <div className="space-y-2">
+                {suggestions.map((p) => (
+                  <div key={p.id} className="flex items-center gap-3 rounded-lg border border-border p-2">
+                    <img src={p.imageUrl} alt={p.name} className="h-12 w-12 rounded-md object-cover" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-semibold truncate">{p.name}</p>
+                      <p className="text-xs font-bold text-primary">{formatPrice(p.price)}</p>
+                    </div>
+                    <button
+                      onClick={() => addItem(p)}
+                      className="shrink-0 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground hover:bg-violet-700 transition-base"
+                      aria-label={`Agregar ${p.name}`}
+                    >
+                      <Plus className="h-4 w-4" />
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>

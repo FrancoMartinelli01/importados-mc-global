@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Check, Star, Minus, Plus, ShoppingCart, ChevronRight, MessageCircle } from 'lucide-react';
 import { PRODUCTS, formatPrice, getDiscountPercent } from '@/data/products';
 import { useCartStore } from '@/store/cartStore';
 import SEO from '@/components/SEO';
 import ProductGallery from '@/components/ProductGallery';
+import ProductCard from '@/components/ProductCard';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -23,6 +24,14 @@ export default function ProductDetail() {
 
   const hasDiscount = !!product.originalPrice;
   const outOfStock = product.stock === 0;
+
+  const relatedProducts = useMemo(() => {
+    const sameCat = PRODUCTS.filter((p) => p.category === product.category && p.id !== product.id);
+    const brandWord = product.name.split(' ').find((w) => w.length > 3);
+    const sameBrand = brandWord ? sameCat.filter((p) => p.name.toLowerCase().includes(brandWord.toLowerCase())) : [];
+    const others = sameCat.filter((p) => !sameBrand.includes(p));
+    return [...sameBrand, ...others].slice(0, 4);
+  }, [product]);
 
   const handleAdd = () => {
     if (product.sizes && !selectedSize) {
@@ -180,6 +189,18 @@ export default function ProductDetail() {
           </div>
         </div>
       </div>
+
+      {/* Cross-selling */}
+      {relatedProducts.length > 0 && (
+        <section className="mt-16">
+          <h2 className="mb-6 text-2xl font-bold text-foreground">También te puede interesar</h2>
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {relatedProducts.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }
