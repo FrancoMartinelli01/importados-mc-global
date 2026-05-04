@@ -118,7 +118,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
               <span>{formatPrice(total)}</span>
             </div>
             <p className="text-xs text-muted-foreground">
-              {total >= 100000 ? '✅ Envío gratis incluido' : 'Envío gratis en compras mayores a $100.000'}
+              El costo de envío se calcula en el checkout según tu zona.
             </p>
             <button
               onClick={() => { onClose(); navigate('/checkout'); }}
