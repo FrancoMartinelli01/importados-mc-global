@@ -15,10 +15,16 @@ type OrderData = {
   items: string;
   total: number;
   date: string;
+  shippingMethod?: string;
+  shippingZone?: string;
+  shippingCost?: number;
 };
 
 function buildWhatsAppUrl(order: OrderData, paymentId: string | null) {
   const itemLines = order.items.split(', ').map((i) => `• ${i}`).join('\n');
+  const shippingLine = order.shippingMethod
+    ? `\n🚚 Envío: ${order.shippingMethod}${order.shippingZone ? ` — ${order.shippingZone}` : ''}${order.shippingCost ? ` (${formatPrice(order.shippingCost)})` : ''}`
+    : '';
   const msg = `🛍️ NUEVA ORDEN - Importados MC
 
 📋 Orden: #${order.orderNumber}
@@ -33,6 +39,7 @@ function buildWhatsAppUrl(order: OrderData, paymentId: string | null) {
 ${itemLines}
 
 💰 Total: ${formatPrice(order.total)}
+${shippingLine}
 
 📦 Envío a:
 ${order.address}
