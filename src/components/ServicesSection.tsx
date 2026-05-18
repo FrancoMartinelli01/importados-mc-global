@@ -6,15 +6,15 @@ const services = [
     title: 'Personal Shopper',
     icon: ShoppingBag,
     steps: [
-      'Envianos lo que te gusta',
-      'Nosotros lo buscamos y lo compramos',
+      'Te ayudamos a encontrar productos exclusivos de USA',
+      'Lo compramos por vos en retailers internacionales',
       'Te lo llevamos a la puerta de tu casa',
     ],
     url: 'https://wa.me/541138086005?text=Hola%20Importados%20MC!%20Quiero%20usar%20el%20servicio%20de%20Personal%20Shopper.%20Les%20comparto%20el%20producto%20que%20estoy%20buscando.',
     cta: 'Empezar ahora',
   },
   {
-    title: 'Envíos a Argentina',
+    title: 'Importación y entrega en Argentina',
     icon: Truck,
     steps: [
       'Comprá online en cualquier tienda de USA',
@@ -25,14 +25,14 @@ const services = [
     cta: 'Empezar ahora',
   },
   {
-    title: 'Storage',
+    title: 'Recepción y armado de pedidos',
     icon: Archive,
     steps: [
       'Comprá online en cualquier tienda de USA',
-      'Enviá a nuestra dirección en Miami',
+      'Recibimos y armamos tu pedido en Miami',
       'Lo guardamos por un muy bajo precio hasta que lo necesites',
     ],
-    url: 'https://wa.me/541138086005?text=Hola%20Importados%20MC!%20Quiero%20consultar%20precios%20del%20servicio%20de%20Storage%20en%20Miami.',
+    url: 'https://wa.me/541138086005?text=Hola%20Importados%20MC!%20Quiero%20consultar%20precios%20del%20servicio%20de%20recepci%C3%B3n%20y%20armado%20de%20pedidos%20en%20Miami.',
     cta: 'Ver Precios',
   },
 ];
