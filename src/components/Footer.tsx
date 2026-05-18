@@ -52,8 +52,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-8 text-center text-xs text-gray-500">
-          © {new Date().getFullYear()} Importados MC. Todos los derechos reservados.
+        <div className="mt-12 border-t border-white/10 pt-8 text-center text-xs text-gray-500 space-y-3">
+          <p className="mx-auto max-w-3xl">
+            Las marcas mencionadas pertenecen a sus respectivos propietarios. MC Importados comercializa productos originales adquiridos a través de proveedores y retailers internacionales.
+          </p>
+          <p>© {new Date().getFullYear()} Importados MC. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
