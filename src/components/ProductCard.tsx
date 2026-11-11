@@ -1,93 +1,86 @@
 import { Link } from 'react-router-dom';
-import { Eye, ShoppingCart, Star } from 'lucide-react';
-import { Product, formatPrice, getDiscountPercent } from '@/data/products';
+import { Plus } from 'lucide-react';
+import { Product, formatPrice, getDiscountPercent, getBrand, getShortName } from '@/data/products';
 import { useCartStore } from '@/store/cartStore';
+import { toast } from 'sonner';
 
-const badgeColors: Record<string, string> = {
-  Nuevo: 'bg-foreground text-background',
-  Importado: 'bg-primary text-primary-foreground',
+const badgeStyles: Record<string, string> = {
+  Nuevo: 'bg-tag text-foreground',
   Oferta: 'bg-destructive text-destructive-foreground',
-  'Stock limitado': 'bg-amber-500 text-white',
+  'Stock limitado': 'bg-foreground text-background',
 };
 
 export default function ProductCard({ product }: { product: Product }) {
   const addItem = useCartStore((s) => s.addItem);
   const hasDiscount = !!product.originalPrice;
   const outOfStock = product.stock === 0;
+  const brand = getBrand(product);
+  const isTech = product.category === 'Tecnología';
+  const second = product.images?.find((img) => img !== product.imageUrl);
+  const fit = isTech ? 'object-contain p-5' : 'object-cover';
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm hover:shadow-lg hover:-translate-y-1 transition-base">
-      {/* Image */}
-      <Link to={`/producto/${product.id}`} className="relative aspect-square overflow-hidden bg-secondary">
+    <article className="group relative flex flex-col">
+      <Link
+        to={`/producto/${product.id}`}
+        className="relative aspect-[4/5] overflow-hidden rounded-md bg-white"
+        aria-label={product.name}
+      >
         <img
           src={product.imageUrl}
           alt={product.name}
-          className="h-full w-full object-cover group-hover:scale-105 transition-base"
+          loading="lazy"
+          className={`h-full w-full ${fit} transition-opacity duration-300 ${second ? 'group-hover:opacity-0' : ''}`}
         />
-        {/* Badge */}
-        {product.badge && (
-          <span className={`absolute left-3 top-3 rounded-full px-2.5 py-0.5 text-xs font-semibold ${badgeColors[product.badge]}`}>
+        {second && (
+          <img
+            src={second}
+            alt=""
+            loading="lazy"
+            className={`absolute inset-0 h-full w-full ${fit} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+          />
+        )}
+        {product.badge && badgeStyles[product.badge] && (
+          <span className={`absolute left-2.5 top-2.5 rounded-full px-2.5 py-0.5 text-xs font-semibold ${badgeStyles[product.badge]}`}>
             {product.badge}
           </span>
         )}
-        {/* Discount badge */}
         {hasDiscount && (
-          <span className="absolute right-3 top-3 rounded-full bg-destructive px-2 py-0.5 text-xs font-bold text-destructive-foreground">
+          <span className="absolute right-2.5 top-2.5 rounded-full bg-destructive px-2 py-0.5 text-xs font-bold text-destructive-foreground">
             -{getDiscountPercent(product.price, product.originalPrice!)}%
           </span>
         )}
-        {/* Out of stock overlay */}
         {outOfStock && (
-          <div className="absolute inset-0 flex items-center justify-center bg-foreground/50 text-lg font-bold text-background">
+          <div className="absolute inset-0 flex items-center justify-center bg-background/70 font-display text-2xl font-black uppercase">
             Sin stock
           </div>
         )}
-        {/* Eye icon on hover */}
-        <div className="absolute right-3 bottom-3 opacity-0 group-hover:opacity-100 transition-base">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-background/90 shadow">
-            <Eye className="h-4 w-4 text-foreground" />
-          </div>
-        </div>
       </Link>
 
-      {/* Body */}
-      <div className="flex flex-1 flex-col p-4">
-        <span className="text-xs font-semibold uppercase tracking-widest text-primary">
-          {product.category}
-        </span>
-        <h3 className="mt-1 text-sm font-bold text-foreground line-clamp-2">{product.name}</h3>
-
-        {/* Rating */}
-        <div className="mt-1.5 flex items-center gap-1">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star
-              key={i}
-              className={`h-3.5 w-3.5 ${i < Math.floor(product.rating) ? 'fill-amber-400 text-amber-400' : 'text-border'}`}
-            />
-          ))}
-          <span className="ml-1 text-xs text-muted-foreground">{product.rating}</span>
-        </div>
-
-        {/* Price */}
-        <div className="mt-2 flex items-baseline gap-2">
-          <span className="text-lg font-bold text-foreground">{formatPrice(product.price)}</span>
-          {hasDiscount && (
-            <span className="text-sm text-muted-foreground line-through">
-              {formatPrice(product.originalPrice!)}
-            </span>
-          )}
-        </div>
-
-        {/* Add to cart */}
+      <div className="flex flex-1 items-start justify-between gap-3 pt-3">
+        <Link to={`/producto/${product.id}`} className="min-w-0">
+          {brand && <p className="text-[13px] font-semibold text-muted-foreground">{brand}</p>}
+          <h3 className="mt-0.5 font-sans text-[15px] font-medium leading-snug line-clamp-2">{getShortName(product)}</h3>
+          <div className="mt-1.5 flex items-baseline gap-2">
+            <span className="font-display text-2xl font-extrabold leading-none">{formatPrice(product.price)}</span>
+            {hasDiscount && (
+              <span className="text-sm text-muted-foreground line-through">{formatPrice(product.originalPrice!)}</span>
+            )}
+          </div>
+        </Link>
         <button
           disabled={outOfStock}
-          onClick={() => addItem(product)}
-          className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-2.5 text-sm font-semibold text-primary-foreground hover:bg-violet-700 disabled:bg-muted disabled:text-muted-foreground transition-base"
+          onClick={() => {
+            addItem(product);
+            toast.success('Agregado al carrito', { description: getShortName(product) });
+          }}
+          aria-label={`Agregar ${product.name} al carrito`}
+          title="Agregar al carrito"
+          className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-foreground/20 transition-base hover:border-foreground hover:bg-foreground hover:text-background disabled:pointer-events-none disabled:opacity-30"
         >
-          <ShoppingCart className="h-4 w-4" />
-          {outOfStock ? 'Sin stock' : 'Agregar al carrito'}
+          <Plus className="h-5 w-5" />
         </button>
       </div>
-    </div>
+    </article>
   );
 }

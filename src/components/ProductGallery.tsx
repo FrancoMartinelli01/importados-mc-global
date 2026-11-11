@@ -54,7 +54,7 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
   return (
     <div className="space-y-3">
       {/* Main image carousel */}
-      <div className="relative overflow-hidden rounded-2xl bg-secondary group">
+      <div className="relative overflow-hidden rounded-md bg-secondary group">
         <div ref={emblaRef} className="overflow-hidden">
           <div className="flex">
             {images.map((src, i) => (
@@ -113,7 +113,7 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
               onClick={() => scrollTo(i)}
               className={`shrink-0 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
                 i === selectedIndex
-                  ? 'border-violet-600 ring-1 ring-violet-600/30'
+                  ? 'border-foreground ring-1 ring-foreground/20'
                   : 'border-transparent hover:border-border'
               }`}
             >

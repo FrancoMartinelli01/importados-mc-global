@@ -30,7 +30,7 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <Sonner />
+        <Sonner position="top-center" />
         <BrowserRouter>
           <div className="flex min-h-screen flex-col">
             <Navbar onCartOpen={() => setCartOpen(true)} />

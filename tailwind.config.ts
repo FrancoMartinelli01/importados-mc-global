@@ -14,7 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Figtree', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['"Big Shoulders Display"', 'Impact', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -23,6 +24,7 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         surface: "hsl(var(--surface))",
+        tag: "hsl(var(--tag))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -72,11 +74,23 @@ export default {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.5" },
         },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+        swing: {
+          "0%": { transform: "rotate(-9deg)" },
+          "55%": { transform: "rotate(4deg)" },
+          "80%": { transform: "rotate(-2deg)" },
+          "100%": { transform: "rotate(0deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        marquee: "marquee 40s linear infinite",
+        swing: "swing 1.4s cubic-bezier(0.3, 0.7, 0.4, 1) 0.3s both",
       },
     },
   },

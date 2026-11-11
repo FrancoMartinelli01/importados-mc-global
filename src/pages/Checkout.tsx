@@ -144,11 +144,11 @@ export default function Checkout() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-8">
       <SEO title="Checkout | Importados MC" />
-      <h1 className="mb-8 text-2xl font-bold text-foreground">Checkout</h1>
+      <h1 className="mb-8 text-4xl font-black text-foreground uppercase leading-[0.95]">Checkout</h1>
 
       {processing && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60 backdrop-blur-sm">
-          <div className="flex flex-col items-center gap-4 rounded-2xl bg-background p-8 shadow-2xl">
+          <div className="flex flex-col items-center gap-4 rounded-md bg-background p-8 shadow-2xl">
             <Loader2 className="h-10 w-10 animate-spin text-primary" />
             <p className="text-lg font-semibold">Procesando pago...</p>
           </div>
@@ -158,7 +158,7 @@ export default function Checkout() {
       <form onSubmit={handleSubmit(onSubmit)} className="grid gap-8 lg:grid-cols-5">
         <div className="lg:col-span-3 space-y-6">
           <div className="space-y-4">
-            <h2 className="text-lg font-semibold text-foreground">Datos de envío</h2>
+            <h2 className="font-sans text-lg font-semibold text-foreground">Datos de envío</h2>
             {([
               ['nombre', 'Nombre completo'],
               ['email', 'Email'],
@@ -180,7 +180,7 @@ export default function Checkout() {
           </div>
 
           <div className="space-y-4">
-            <h2 className="text-lg font-semibold text-foreground">Método de envío</h2>
+            <h2 className="font-sans text-lg font-semibold text-foreground">Método de envío</h2>
             <div className="grid gap-3 sm:grid-cols-2">
               {methodOptions.map(({ value, title, subtitle, icon: Icon }) => {
                 const selected = method === value;
@@ -276,8 +276,8 @@ export default function Checkout() {
         </div>
 
         <div className="lg:col-span-2">
-          <div className="sticky top-24 rounded-2xl border border-border bg-card p-6 space-y-4">
-            <h2 className="text-lg font-semibold text-foreground">Resumen de orden</h2>
+          <div className="sticky top-24 rounded-md border border-border bg-card p-6 space-y-4">
+            <h2 className="font-sans text-lg font-semibold text-foreground">Resumen de orden</h2>
             <div className="space-y-3 max-h-60 overflow-y-auto">
               {items.map((item) => (
                 <div key={`${item.product.id}-${item.selectedSize}`} className="flex gap-3">
@@ -310,7 +310,7 @@ export default function Checkout() {
             <button
               type="submit"
               disabled={processing}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-sm font-semibold text-primary-foreground hover:bg-violet-700 transition-base disabled:opacity-50"
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3.5 text-sm font-semibold text-primary-foreground hover:bg-accent transition-base disabled:opacity-50"
             >
               <Zap className="h-4 w-4" />
               Pagar con Mercado Pago

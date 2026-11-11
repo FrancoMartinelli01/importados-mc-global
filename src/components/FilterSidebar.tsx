@@ -23,7 +23,7 @@ export default function FilterSidebar({
     <div className="space-y-6">
       {mobile && (
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-bold">Filtros</h3>
+          <h3 className="font-sans text-lg font-bold">Filtros</h3>
           <button onClick={onClose} className="rounded-full p-2 hover:bg-secondary transition-base">
             <X className="h-5 w-5" />
           </button>
@@ -32,7 +32,7 @@ export default function FilterSidebar({
 
       {/* Category chips */}
       <div>
-        <h4 className="mb-3 text-sm font-semibold text-foreground">Categoría</h4>
+        <h4 className="font-sans mb-3 text-sm font-semibold text-foreground">Categoría</h4>
         <div className="flex flex-wrap gap-2">
           {categories.map((c) => (
             <button
@@ -52,7 +52,7 @@ export default function FilterSidebar({
 
       {/* Price range */}
       <div>
-        <h4 className="mb-3 text-sm font-semibold text-foreground">Precio</h4>
+        <h4 className="font-sans mb-3 text-sm font-semibold text-foreground">Precio</h4>
         <div className="space-y-2">
           <input
             type="range"
@@ -61,7 +61,7 @@ export default function FilterSidebar({
             step={10000}
             value={priceRange[0]}
             onChange={(e) => onPriceRangeChange([+e.target.value, priceRange[1]])}
-            className="w-full accent-violet-600"
+            className="w-full accent-foreground"
           />
           <input
             type="range"
@@ -70,7 +70,7 @@ export default function FilterSidebar({
             step={10000}
             value={priceRange[1]}
             onChange={(e) => onPriceRangeChange([priceRange[0], +e.target.value])}
-            className="w-full accent-violet-600"
+            className="w-full accent-foreground"
           />
           <div className="flex justify-between text-xs text-muted-foreground">
             <span>${priceRange[0].toLocaleString('es-AR')}</span>
@@ -86,7 +86,7 @@ export default function FilterSidebar({
             type="checkbox"
             checked={stockOnly}
             onChange={(e) => onStockOnlyChange(e.target.checked)}
-            className="h-4 w-4 rounded accent-violet-600"
+            className="h-4 w-4 rounded accent-foreground"
           />
           <span className="text-sm font-medium">Solo con stock</span>
         </label>

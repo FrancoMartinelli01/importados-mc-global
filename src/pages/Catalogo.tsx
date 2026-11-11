@@ -36,12 +36,16 @@ export default function Catalogo() {
   }, [categoryParam]);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8">
+    <div className="mx-auto max-w-7xl px-4 py-10 md:py-14">
       <SEO title="Catálogo | Importados MC" />
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-10 flex items-end justify-between gap-4 border-b border-border pb-6">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Catálogo</h1>
-          <p className="text-sm text-muted-foreground">{filtered.length} productos encontrados</p>
+          <h1 className="text-6xl font-black uppercase leading-[0.85] md:text-8xl">
+            {searchTerm ? `“${searchTerm}”` : selectedCategory === 'Todos' ? 'Catálogo' : selectedCategory}
+          </h1>
+          <p className="mt-3 text-[15px] text-muted-foreground">
+            {filtered.length} {filtered.length === 1 ? 'producto' : 'productos'}
+          </p>
         </div>
         <button
           onClick={() => setMobileFilters(true)}
@@ -66,7 +70,7 @@ export default function Catalogo() {
 
         {/* Product grid */}
         <div className="flex-1">
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 xl:grid-cols-4">
             {filtered.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}

@@ -6,7 +6,7 @@ export default function ComoComprar() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
       <SEO title="Cómo Comprar | Importados MC" description="Aprendé cómo comprar productos importados desde USA de forma fácil y segura." />
-      <h1 className="text-3xl font-bold text-foreground mb-4">Cómo Comprar</h1>
+      <h1 className="text-5xl font-black text-foreground mb-4 uppercase leading-[0.95]">Cómo Comprar</h1>
       <ol className="list-decimal list-inside space-y-3 text-muted-foreground mb-8">
         <li>Explorá nuestro catálogo o pedinos el producto que buscás por WhatsApp.</li>
         <li>Agregá los productos al carrito y completá tus datos de envío.</li>

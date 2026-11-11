@@ -433,3 +433,18 @@ export const formatPrice = (price: number): string => {
 export const getDiscountPercent = (price: number, originalPrice: number): number => {
   return Math.round((1 - price / originalPrice) * 100);
 };
+
+// La marca viene entre paréntesis al final del nombre: "Campera bomber negra (Diesel)"
+export const getBrand = (product: Product): string | null => {
+  const m = product.name.match(/\(([^)]+)\)\s*$/);
+  if (m && !/USB|con /i.test(m[1])) return m[1];
+  if (/AirPods|Apple/i.test(product.name)) return 'Apple';
+  if (/GoPro/i.test(product.name)) return 'GoPro';
+  return null;
+};
+
+export const getShortName = (product: Product): string => {
+  const brand = getBrand(product);
+  if (!brand) return product.name;
+  return product.name.replace(/\s*\(([^)]+)\)\s*$/, (full, inner) => (inner === brand ? '' : full)).trim();
+};

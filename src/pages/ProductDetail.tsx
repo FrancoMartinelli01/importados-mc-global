@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Check, Star, Minus, Plus, ShoppingCart, ChevronRight, MessageCircle } from 'lucide-react';
-import { PRODUCTS, formatPrice, getDiscountPercent } from '@/data/products';
+import { PRODUCTS, formatPrice, getDiscountPercent, getBrand, getShortName } from '@/data/products';
 import { useCartStore } from '@/store/cartStore';
 import SEO from '@/components/SEO';
 import ProductGallery from '@/components/ProductGallery';
@@ -74,7 +74,7 @@ export default function ProductDetail() {
         {/* Info */}
         <div className="lg:col-span-2 space-y-6">
           <div>
-            <span className="inline-block rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">
+            <span className="inline-block rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-foreground">
               {product.category}
             </span>
             {product.badge && (
@@ -84,7 +84,10 @@ export default function ProductDetail() {
             )}
           </div>
 
-          <h1 className="text-3xl font-bold text-foreground">{product.name}</h1>
+          <div>
+            {getBrand(product) && <p className="mb-1 text-[15px] font-semibold text-muted-foreground">{getBrand(product)}</p>}
+            <h1 className="text-5xl font-black uppercase leading-[0.9]">{getShortName(product)}</h1>
+          </div>
 
           {/* Rating */}
           <div className="flex items-center gap-2">
@@ -98,7 +101,7 @@ export default function ProductDetail() {
 
           {/* Price */}
           <div className="flex items-baseline gap-3">
-            <span className="text-3xl font-bold text-foreground">{formatPrice(product.price)}</span>
+            <span className="font-display text-5xl font-extrabold leading-none">{formatPrice(product.price)}</span>
             {hasDiscount && (
               <>
                 <span className="text-lg text-muted-foreground line-through">{formatPrice(product.originalPrice!)}</span>
@@ -113,7 +116,7 @@ export default function ProductDetail() {
 
           {/* Specs */}
           <div>
-            <h3 className="mb-3 text-sm font-semibold text-foreground">Especificaciones</h3>
+            <h3 className="font-sans mb-3 text-sm font-semibold text-foreground">Especificaciones</h3>
             <ul className="space-y-2">
               {product.specs.map((s) => (
                 <li key={s} className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -126,7 +129,7 @@ export default function ProductDetail() {
           {/* Sizes */}
           {product.sizes && (
             <div>
-              <h3 className="mb-3 text-sm font-semibold text-foreground">Talle</h3>
+              <h3 className="font-sans mb-3 text-sm font-semibold text-foreground">Talle</h3>
               <div className="flex flex-wrap gap-2">
                 {product.sizes.map((s) => (
                   <button
@@ -148,7 +151,7 @@ export default function ProductDetail() {
 
           {/* Qty */}
           <div>
-            <h3 className="mb-3 text-sm font-semibold text-foreground">Cantidad</h3>
+            <h3 className="font-sans mb-3 text-sm font-semibold text-foreground">Cantidad</h3>
             <div className="inline-flex items-center gap-3 rounded-xl border border-border">
               <button onClick={() => setQty(Math.max(1, qty - 1))} className="p-3 hover:bg-secondary transition-base rounded-l-xl">
                 <Minus className="h-4 w-4" />
@@ -165,7 +168,7 @@ export default function ProductDetail() {
             <button
               disabled={outOfStock}
               onClick={handleAdd}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-sm font-semibold text-primary-foreground hover:bg-violet-700 disabled:bg-muted disabled:text-muted-foreground transition-base"
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3.5 text-sm font-semibold text-primary-foreground hover:bg-accent disabled:bg-muted disabled:text-muted-foreground transition-base"
             >
               <ShoppingCart className="h-4 w-4" />
               {outOfStock ? 'Sin stock' : 'Agregar al carrito'}
@@ -193,7 +196,7 @@ export default function ProductDetail() {
       {/* Cross-selling */}
       {relatedProducts.length > 0 && (
         <section className="mt-16">
-          <h2 className="mb-6 text-2xl font-bold text-foreground">También te puede interesar</h2>
+          <h2 className="mb-6 text-4xl font-black text-foreground uppercase leading-[0.95]">También te puede interesar</h2>
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {relatedProducts.map((p) => (
               <ProductCard key={p.id} product={p} />

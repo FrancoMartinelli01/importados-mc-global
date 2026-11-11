@@ -27,7 +27,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
       <div className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-background shadow-2xl">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-border px-6 py-4">
-          <h2 className="text-lg font-bold">Tu carrito ({totalItems()})</h2>
+          <h2 className="font-sans text-lg font-bold">Tu carrito ({totalItems()})</h2>
           <button onClick={onClose} className="rounded-full p-2 hover:bg-secondary transition-base">
             <X className="h-5 w-5" />
           </button>
@@ -87,7 +87,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
           {/* Cross-sell suggestions */}
           {items.length > 0 && suggestions.length > 0 && (
             <div className="mt-6 border-t border-border pt-4">
-              <h3 className="mb-3 text-sm font-bold text-foreground">Completá tu look</h3>
+              <h3 className="font-sans mb-3 text-sm font-bold text-foreground">Completá tu look</h3>
               <div className="space-y-2">
                 {suggestions.map((p) => (
                   <div key={p.id} className="flex items-center gap-3 rounded-lg border border-border p-2">
@@ -98,7 +98,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
                     </div>
                     <button
                       onClick={() => addItem(p)}
-                      className="shrink-0 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground hover:bg-violet-700 transition-base"
+                      className="shrink-0 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground hover:bg-accent transition-base"
                       aria-label={`Agregar ${p.name}`}
                     >
                       <Plus className="h-4 w-4" />
@@ -122,7 +122,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
             </p>
             <button
               onClick={() => { onClose(); navigate('/checkout'); }}
-              className="w-full rounded-xl bg-primary py-3 text-sm font-semibold text-primary-foreground hover:bg-violet-700 transition-base"
+              className="w-full rounded-full bg-primary py-3 text-sm font-semibold text-primary-foreground hover:bg-accent transition-base"
             >
               Finalizar compra →
             </button>

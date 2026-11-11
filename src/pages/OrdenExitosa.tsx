@@ -83,14 +83,14 @@ export default function OrdenExitosa() {
         <CheckCircle className="h-12 w-12 text-green-500" />
       </div>
 
-      <h1 className="text-3xl font-bold text-foreground">¡Tu pedido fue confirmado!</h1>
+      <h1 className="text-5xl font-black text-foreground uppercase leading-[0.95]">¡Tu pedido fue confirmado!</h1>
 
       {order ? (
         <>
           <p className="mt-4 text-2xl font-extrabold text-primary">#{order.orderNumber}</p>
 
-          <div className="mt-6 w-full max-w-md rounded-2xl border border-border bg-card p-6 text-left space-y-3">
-            <h2 className="text-lg font-semibold text-foreground">Resumen de compra</h2>
+          <div className="mt-6 w-full max-w-md rounded-md border border-border bg-card p-6 text-left space-y-3">
+            <h2 className="font-sans text-lg font-semibold text-foreground">Resumen de compra</h2>
             <div className="space-y-1 text-sm text-muted-foreground">
               {order.items.split(', ').map((item, idx) => (
                 <p key={idx}>• {item}</p>

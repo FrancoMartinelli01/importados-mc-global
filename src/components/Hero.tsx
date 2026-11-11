@@ -1,65 +1,81 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { Plane } from 'lucide-react';
+
+const WA_URL =
+  'https://wa.me/541138086005?text=Hola%20Importados%20MC!%20Quiero%20encargar%20un%20producto.';
+
+function BaggageTag() {
+  return (
+    <div
+      className="absolute -top-2 left-4 z-10 w-48 origin-top animate-swing sm:-left-16 sm:top-10 sm:w-60"
+      aria-hidden="true"
+    >
+      {/* cordón */}
+      <div className="mx-auto h-10 w-px bg-foreground/60" />
+      <div className="relative rounded-[10px] bg-tag px-4 pb-4 pt-6 text-foreground shadow-[0_18px_40px_-18px_rgba(21,23,28,0.55)]">
+        <span className="absolute left-1/2 top-2.5 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-background ring-2 ring-foreground/15" />
+        <div className="flex items-end justify-between font-display font-black leading-none">
+          <span className="text-[2.6rem] sm:text-5xl">MIA</span>
+          <Plane className="mb-1.5 h-5 w-5 rotate-45" strokeWidth={2.5} />
+          <span className="text-[2.6rem] sm:text-5xl">EZE</span>
+        </div>
+        <div className="mt-3 border-t-2 border-dashed border-foreground/30 pt-2.5 text-[13px] leading-snug">
+          <p className="font-semibold">Destino: tu casa</p>
+          <p className="text-foreground/70">Importados MC</p>
+        </div>
+        {/* "código de barras" */}
+        <div className="mt-3 flex h-7 items-stretch gap-[2px]">
+          {[3, 1, 2, 1, 1, 3, 2, 1, 2, 3, 1, 1, 2, 1, 3, 1, 2, 2, 1, 3, 1, 2].map((w, i) => (
+            <span key={i} className="bg-foreground" style={{ width: w * 1.5 }} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
-    <>
-      <section
-        className="relative overflow-hidden px-4 py-24 md:py-36"
-        style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1920&q=80)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        {/* Overlay */}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(109,40,217,0.4) 100%)' }} />
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
-          {/* Pill badge */}
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm text-white">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-            </span>
-            Nuevos ingresos disponibles
-          </div>
-
-          <h1 className="text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl">
-            Lo mejor del mundo,
-            <br />
-            <span className="text-violet-400">en tu puerta.</span>
+    <section className="relative overflow-hidden border-b border-border">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 pb-16 pt-10 md:grid-cols-[1.15fr_0.85fr] md:pb-24 md:pt-16">
+        <div>
+          <h1 className="font-display text-[clamp(4.5rem,21vw,7rem)] md:text-[clamp(5rem,10.5vw,10.5rem)] font-black uppercase leading-[0.82] tracking-[-0.01em]">
+            De Miami
+            <br />a tu casa.
           </h1>
-
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400">
-            Tecnología, indumentaria y accesorios importados. Directamente desde Estados Unidos a Argentina.
+          <p className="mt-8 max-w-md text-lg leading-relaxed text-muted-foreground">
+            Ropa de marca y tecnología original, comprada en Estados Unidos y enviada a cualquier punto de Argentina.
           </p>
-
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link
               to="/catalogo"
-              className="inline-flex items-center gap-2 rounded-full bg-violet-600 px-8 py-3.5 text-sm font-semibold text-white hover:bg-violet-700 transition-base"
+              className="inline-flex h-12 items-center rounded-full bg-foreground px-7 text-[15px] font-semibold text-background transition-base hover:bg-accent"
             >
-              Ver Novedades <ArrowRight className="h-4 w-4" />
+              Ver el catálogo
             </Link>
-            <Link
-              to="/catalogo?categoria=Tecnología"
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-3.5 text-sm font-semibold text-white hover:bg-white/10 transition-base"
+            <a
+              href={WA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 items-center rounded-full border border-foreground/25 px-7 text-[15px] font-semibold transition-base hover:border-foreground"
             >
-              Tecnología
-            </Link>
+              Encargar algo que no está
+            </a>
           </div>
         </div>
-      </section>
 
-      {/* Trust bar */}
-      <div className="border-b border-border bg-background py-5">
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-6 px-4 text-sm text-muted-foreground md:gap-10">
-          <span>🚚 Envío a todo el país</span>
-          <span>🛡️ Compra protegida</span>
-          <span>📦 Producto 100% original</span>
-          <span>⚡ Pago con Mercado Pago</span>
+        <div className="relative mx-auto w-full max-w-sm md:max-w-none">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-white">
+            <img
+              src="/Conjunto-negro-armani-1.jpeg"
+              alt="Prendas Armani colgadas en el perchero de Importados MC"
+              className="h-full w-full object-cover object-[50%_30%]"
+              fetchPriority="high"
+            />
+          </div>
+          <BaggageTag />
         </div>
       </div>
-    </>
+    </section>
   );
 }
