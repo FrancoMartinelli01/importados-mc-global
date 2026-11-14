@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import Hero from '@/components/Hero';
 import BrandStrip from '@/components/BrandStrip';
-import CategoryTiles from '@/components/CategoryTiles';
+import ProductStory from '@/components/ProductStory';
 import ProductCard from '@/components/ProductCard';
 import FlightSection from '@/components/FlightSection';
 import ServicesSection from '@/components/ServicesSection';
@@ -36,7 +36,31 @@ export default function Home() {
         </div>
       </section>
 
-      <CategoryTiles />
+      <ProductStory
+        title="Tecnología original"
+        intro="Productos Apple sellados, comprados en Estados Unidos."
+        frames={{ dir: '/secuencias/tecnologia', count: 204 }}
+        bg="#000"
+        dark
+        length={300}
+        chapters={[
+          { productId: 'airpods-pro-3', from: 0, text: 'Cancelación activa de ruido, chip H2 y estuche USB-C.' },
+          { productId: 'apple-watch-s11-42', from: 0.8, text: 'Caja de 42 mm con GPS y monitoreo de salud. También hay de 46 mm.' },
+        ]}
+        cta={{ label: 'Ver tecnología', to: '/catalogo?categoria=Tecnología' }}
+      />
+      <ProductStory
+        title="Diesel, recién llegado"
+        intro="Ropa original de la marca, traída de Estados Unidos."
+        frames={{ dir: '/secuencias/ropa', count: 95 }}
+        bg="#E5F3F8"
+        length={240}
+        chapters={[
+          { productId: 'bomber-diesel', from: 0, text: 'Bomber negra con forro naranja y la etiqueta roja en la manga. Talle XL.' },
+          { productId: 'camperon-diesel-batik', from: 0.72, text: 'Camperón oversize con estampa batik y el logo gigante adelante. Talle XL.' },
+        ]}
+        cta={{ label: 'Ver indumentaria', to: '/catalogo?categoria=Indumentaria' }}
+      />
       <FlightSection />
       <ServicesSection />
       <InstagramBand />
