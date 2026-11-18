@@ -1,23 +1,22 @@
 import { Link } from 'react-router-dom';
 import { Plane } from 'lucide-react';
+import HeroLuggage from '@/components/HeroLuggage';
 
 const WA_URL =
   'https://wa.me/541138086005?text=Hola%20Importados%20MC!%20Quiero%20encargar%20un%20producto.';
 
 function BaggageTag() {
   return (
-    <div
-      className="absolute -top-2 left-4 z-10 w-48 origin-top animate-swing sm:-left-16 sm:top-10 sm:w-60"
-      aria-hidden="true"
-    >
+    <div className="pointer-events-none absolute left-1/2 top-[-7%] z-10 w-28 -translate-x-1/2 sm:top-[-4%] sm:w-44" aria-hidden="true">
+    <div className="origin-top animate-swing [animation-delay:1.1s]">
       {/* cordón */}
       <div className="mx-auto h-10 w-px bg-foreground/60" />
       <div className="relative rounded-[10px] bg-tag px-4 pb-4 pt-6 text-foreground shadow-[0_18px_40px_-18px_rgba(21,23,28,0.55)]">
         <span className="absolute left-1/2 top-2.5 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-background ring-2 ring-foreground/15" />
         <div className="flex items-end justify-between font-display font-black leading-none">
-          <span className="text-[2.6rem] sm:text-5xl">MIA</span>
+          <span className="text-3xl sm:text-4xl">MIA</span>
           <Plane className="mb-1.5 h-5 w-5 rotate-45" strokeWidth={2.5} />
-          <span className="text-[2.6rem] sm:text-5xl">EZE</span>
+          <span className="text-3xl sm:text-4xl">EZE</span>
         </div>
         <div className="mt-3 border-t-2 border-dashed border-foreground/30 pt-2.5 text-[13px] leading-snug">
           <p className="font-semibold">Destino: tu casa</p>
@@ -30,6 +29,7 @@ function BaggageTag() {
           ))}
         </div>
       </div>
+    </div>
     </div>
   );
 }
@@ -64,17 +64,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-sm md:max-w-none">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-white">
-            <img
-              src="/Conjunto-negro-armani-1.jpeg"
-              alt="Prendas Armani colgadas en el perchero de Importados MC"
-              className="h-full w-full object-cover object-[50%_30%]"
-              fetchPriority="high"
-            />
-          </div>
-          <BaggageTag />
-        </div>
+        <HeroLuggage tag={<BaggageTag />} />
       </div>
     </section>
   );
