@@ -1,4 +1,5 @@
 import { ShoppingBag, Truck, Archive } from 'lucide-react';
+import { useInView } from '@/hooks/useInView';
 
 const services = [
   {
@@ -25,6 +26,7 @@ const services = [
 ];
 
 export default function ServicesSection() {
+  const { ref, inView } = useInView<HTMLUListElement>(0.2);
   return (
     <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
       <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr]">
@@ -37,15 +39,26 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        <ul className="border-b border-border">
-          {services.map((s) => {
+        <ul ref={ref} className="border-b border-border">
+          {services.map((s, i) => {
             const Icon = s.icon;
             return (
-              <li key={s.title} className="grid gap-4 border-t border-border py-7 sm:grid-cols-[3rem_1fr_auto] sm:items-center">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-tag">
+              <li key={s.title} className="relative grid gap-4 py-7 sm:grid-cols-[3rem_1fr_auto] sm:items-center">
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 top-0 h-px w-full origin-left bg-border transition-transform duration-700 ease-[cubic-bezier(.2,.8,.2,1)]"
+                  style={{ transform: `scaleX(${inView ? 1 : 0})`, transitionDelay: `${i * 150}ms` }}
+                />
+                <span
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-tag transition-all duration-500 ease-[cubic-bezier(.34,1.56,.64,1)]"
+                  style={{ transform: `scale(${inView ? 1 : 0}) rotate(${inView ? 0 : -40}deg)`, transitionDelay: `${i * 150 + 250}ms` }}
+                >
                   <Icon className="h-5 w-5" />
                 </span>
-                <div>
+                <div
+                  className="transition-all duration-700 ease-[cubic-bezier(.2,.8,.2,1)]"
+                  style={{ opacity: inView ? 1 : 0, transform: `translateY(${inView ? 0 : 14}px)`, transitionDelay: `${i * 150 + 150}ms` }}
+                >
                   <h3 className="font-display text-3xl font-extrabold uppercase leading-none">{s.title}</h3>
                   <p className="mt-2 max-w-md text-[15px] text-muted-foreground">{s.text}</p>
                 </div>

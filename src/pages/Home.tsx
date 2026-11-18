@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import Hero from '@/components/Hero';
-import BrandStrip from '@/components/BrandStrip';
+import TapeStrip from '@/components/TapeStrip';
+import Showcase from '@/components/Showcase';
+import { useInView } from '@/hooks/useInView';
 import ProductStory from '@/components/ProductStory';
 import ProductCard from '@/components/ProductCard';
 import FlightSection from '@/components/FlightSection';
@@ -11,6 +13,7 @@ import WhyChooseUs from '@/components/WhyChooseUs';
 import { PRODUCTS } from '@/data/products';
 
 export default function Home() {
+  const deal = useInView<HTMLDivElement>(0.15);
   // Mezcla de tecnología e indumentaria para que la vidriera no quede toda igual
   const inStock = PRODUCTS.filter((p) => p.stock > 0);
   const tech = inStock.filter((p) => p.category === 'Tecnología');
@@ -21,7 +24,8 @@ export default function Home() {
     <>
       <SEO title="Importados MC | Productos importados desde USA a Argentina" />
       <Hero />
-      <BrandStrip />
+      <TapeStrip />
+      <Showcase />
 
       <section className="mx-auto max-w-7xl px-4 pt-16 md:pt-24">
         <div className="mb-8 flex items-end justify-between gap-4">
@@ -30,9 +34,20 @@ export default function Home() {
             Ver todo ({PRODUCTS.length})
           </Link>
         </div>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-4">
-          {featured.map((p) => (
-            <ProductCard key={p.id} product={p} />
+        <div ref={deal.ref} className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-4">
+          {featured.map((p, i) => (
+            // las tarjetas entran como cartas repartidas sobre la mesa
+            <div
+              key={p.id}
+              className="transition-all duration-700 ease-[cubic-bezier(.2,.8,.2,1)]"
+              style={{
+                opacity: deal.inView ? 1 : 0,
+                transform: deal.inView ? 'none' : `translateY(56px) rotate(${i % 2 ? 5 : -5}deg)`,
+                transitionDelay: `${(i % 4) * 90 + Math.floor(i / 4) * 160}ms`,
+              }}
+            >
+              <ProductCard product={p} />
+            </div>
           ))}
         </div>
       </section>
