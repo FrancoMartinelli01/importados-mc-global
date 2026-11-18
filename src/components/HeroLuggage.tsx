@@ -75,7 +75,7 @@ export default function HeroLuggage({ tag }: { tag: React.ReactNode }) {
               <Link
                 to={`/producto/${it.id}`}
                 aria-label={p ? getShortName(p) : it.id}
-                className="group block animate-float motion-reduce:animate-none"
+                className="group block animate-float will-change-transform motion-reduce:animate-none"
                 style={{ animationDelay: `${i * -1.3}s`, animationDuration: `${6 + i}s` }}
               >
                 <img

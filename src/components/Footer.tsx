@@ -27,7 +27,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 pt-16">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <img src="/logo.png" alt="Importados MC" className="h-16 w-auto" />
+            <img src="/logo-mark.webp" alt="Importados MC" className="h-12 w-auto" />
             <p className="mt-5 max-w-xs text-sm text-background/65">
               Ropa de marca y tecnología original, traída desde Estados Unidos a toda Argentina.
             </p>

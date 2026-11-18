@@ -10,7 +10,7 @@ function Tape({ items, className, reverse }: { items: string[]; className: strin
   return (
     <div className={`flex w-[120%] -translate-x-[8%] overflow-hidden py-3 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.45)] ${className}`}>
       <div
-        className="flex w-max animate-marquee items-center motion-reduce:animate-none"
+        className="flex w-max animate-marquee items-center will-change-transform motion-reduce:animate-none"
         style={reverse ? { animationDirection: 'reverse' } : undefined}
         aria-hidden="true"
       >

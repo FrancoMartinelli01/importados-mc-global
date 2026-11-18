@@ -15,7 +15,7 @@ const navLinks = [
 export function Wordmark({ className = '' }: { className?: string }) {
   return (
     <Link to="/" className={`group flex items-center gap-2.5 ${className}`} aria-label="Importados MC, inicio">
-      <img src="/logo.png" alt="" className="h-10 w-auto invert" />
+      <img src="/logo-mark.webp" alt="" className="h-7 w-auto invert" />
       <span className="font-display text-[1.7rem] font-extrabold uppercase leading-none tracking-tight">
         Importados MC
       </span>
@@ -61,7 +61,7 @@ export default function Navbar({ onCartOpen }: { onCartOpen: () => void }) {
   );
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-border bg-background">
       <div className="bg-foreground text-background">
         <p className="mx-auto max-w-7xl px-4 py-1.5 text-center text-xs sm:text-[13px]">
           Envío a todo el país y pago con Mercado Pago

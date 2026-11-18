@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Suspense, lazy, useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -10,16 +10,17 @@ import CartDrawer from "@/components/CartDrawer";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Home from "@/pages/Home";
-import Catalogo from "@/pages/Catalogo";
-import ProductDetail from "@/pages/ProductDetail";
-import Checkout from "@/pages/Checkout";
-import OrdenExitosa from "@/pages/OrdenExitosa";
-import OrdenFallida from "@/pages/OrdenFallida";
-import SobreNosotros from "@/pages/SobreNosotros";
-import ComoComprar from "@/pages/ComoComprar";
-import Envios from "@/pages/Envios";
-import Devoluciones from "@/pages/Devoluciones";
-import NotFound from "@/pages/NotFound";
+// El home carga de entrada; el resto de las páginas se baja recién cuando se visitan
+const Catalogo = lazy(() => import("@/pages/Catalogo"));
+const ProductDetail = lazy(() => import("@/pages/ProductDetail"));
+const Checkout = lazy(() => import("@/pages/Checkout"));
+const OrdenExitosa = lazy(() => import("@/pages/OrdenExitosa"));
+const OrdenFallida = lazy(() => import("@/pages/OrdenFallida"));
+const SobreNosotros = lazy(() => import("@/pages/SobreNosotros"));
+const ComoComprar = lazy(() => import("@/pages/ComoComprar"));
+const Envios = lazy(() => import("@/pages/Envios"));
+const Devoluciones = lazy(() => import("@/pages/Devoluciones"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ const App = () => {
             <Navbar onCartOpen={() => setCartOpen(true)} />
             <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
             <main className="flex-1">
+              <Suspense fallback={<div className="min-h-[60vh]" />}>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/catalogo" element={<Catalogo />} />
@@ -49,6 +51,7 @@ const App = () => {
                 <Route path="/devoluciones" element={<Devoluciones />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
+              </Suspense>
             </main>
             <Footer />
             <WhatsAppFloat />

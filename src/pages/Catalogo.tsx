@@ -168,7 +168,7 @@ export default function Catalogo() {
       </div>
 
       {/* Barra de filtros: queda pegada arriba al bajar */}
-      <div className="sticky top-[93px] z-30 border-b border-border bg-background/95 backdrop-blur">
+      <div className="sticky top-[93px] z-30 border-b border-border bg-background">
         <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3">
           <div className="-mx-1 flex flex-1 gap-2 overflow-x-auto px-1 [scrollbar-width:none]" aria-label="Marcas">
             <button onClick={() => set('marca', null)} className={chip(brand === 'Todas')}>

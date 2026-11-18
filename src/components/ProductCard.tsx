@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Plus } from 'lucide-react';
 import { Product, formatPrice, getDiscountPercent, getBrand, getShortName } from '@/data/products';
@@ -20,6 +21,8 @@ export default function ProductCard({ product }: { product: Product }) {
   const second = product.images?.find((img) => img !== product.imageUrl);
   const fit = isTech ? 'object-contain p-5' : 'object-cover';
   const cutout = CUTOUTS[product.id];
+  // la foto real (pesada) se pide recién cuando alguien pasa el mouse por la tarjeta
+  const [wantsPhoto, setWantsPhoto] = useState(false);
 
   return (
     <article className="group relative flex flex-col">
@@ -27,6 +30,8 @@ export default function ProductCard({ product }: { product: Product }) {
         to={`/producto/${product.id}`}
         className={`relative aspect-[4/5] overflow-hidden rounded-md ${cutout ? 'bg-[#E8E9E3]' : 'bg-white'}`}
         aria-label={product.name}
+        onPointerEnter={() => setWantsPhoto(true)}
+        onFocus={() => setWantsPhoto(true)}
       >
         {cutout ? (
           <>
@@ -37,12 +42,11 @@ export default function ProductCard({ product }: { product: Product }) {
               loading="lazy"
               className="absolute inset-0 m-auto h-[78%] w-[78%] object-contain drop-shadow-[0_18px_18px_rgba(21,23,28,0.18)] transition-all duration-500 ease-out group-hover:scale-[1.04] group-hover:opacity-0"
             />
-            <img
+            {wantsPhoto && <img
               src={product.imageUrl}
               alt=""
-              loading="lazy"
               className={`absolute inset-0 h-full w-full ${fit} opacity-0 transition-opacity duration-500 group-hover:opacity-100 ${isTech ? 'bg-white' : ''}`}
-            />
+            />}
           </>
         ) : (
           <>
@@ -52,7 +56,7 @@ export default function ProductCard({ product }: { product: Product }) {
               loading="lazy"
               className={`h-full w-full ${fit} transition-opacity duration-300 ${second ? 'group-hover:opacity-0' : ''}`}
             />
-            {second && (
+            {second && wantsPhoto && (
               <img
                 src={second}
                 alt=""
