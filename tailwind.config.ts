@@ -78,6 +78,10 @@ export default {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
         },
+        deal: {
+          from: { opacity: "0", transform: "translateY(36px) rotate(var(--deal-rot, -3deg))" },
+          to: { opacity: "1", transform: "none" },
+        },
         float: {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
@@ -94,6 +98,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         marquee: "marquee 40s linear infinite",
+        deal: "deal 0.6s cubic-bezier(.2,.8,.2,1) both",
         float: "float 7s ease-in-out infinite",
         swing: "swing 1.4s cubic-bezier(0.3, 0.7, 0.4, 1) 0.3s both",
       },

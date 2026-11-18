@@ -48,7 +48,7 @@ export default function ProductStory({ title, intro, frames, bg, dark = false, c
 
   return (
     <section ref={wrapRef} className="relative" style={{ height: `${length}vh`, background: bg }}>
-      <div className="sticky top-[78px] h-[calc(100vh-78px)] overflow-hidden">
+      <div className="sticky top-[93px] h-[calc(100vh-93px)] overflow-hidden">
         <div className="mx-auto grid h-full max-w-7xl grid-rows-[1fr_auto] px-4 md:grid-cols-[1fr_auto] md:grid-rows-1 md:items-center md:gap-12">
           {/* Animación */}
           <div className="relative row-start-1 flex min-h-0 items-center justify-center md:col-start-2">

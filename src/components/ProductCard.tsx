@@ -3,6 +3,7 @@ import { Plus } from 'lucide-react';
 import { Product, formatPrice, getDiscountPercent, getBrand, getShortName } from '@/data/products';
 import { useCartStore } from '@/store/cartStore';
 import { toast } from 'sonner';
+import { CUTOUTS } from '@/data/cutouts';
 
 const badgeStyles: Record<string, string> = {
   Nuevo: 'bg-tag text-foreground',
@@ -18,27 +19,48 @@ export default function ProductCard({ product }: { product: Product }) {
   const isTech = product.category === 'Tecnología';
   const second = product.images?.find((img) => img !== product.imageUrl);
   const fit = isTech ? 'object-contain p-5' : 'object-cover';
+  const cutout = CUTOUTS[product.id];
 
   return (
     <article className="group relative flex flex-col">
       <Link
         to={`/producto/${product.id}`}
-        className="relative aspect-[4/5] overflow-hidden rounded-md bg-white"
+        className={`relative aspect-[4/5] overflow-hidden rounded-md ${cutout ? 'bg-[#E8E9E3]' : 'bg-white'}`}
         aria-label={product.name}
       >
-        <img
-          src={product.imageUrl}
-          alt={product.name}
-          loading="lazy"
-          className={`h-full w-full ${fit} transition-opacity duration-300 ${second ? 'group-hover:opacity-0' : ''}`}
-        />
-        {second && (
-          <img
-            src={second}
-            alt=""
-            loading="lazy"
-            className={`absolute inset-0 h-full w-full ${fit} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
-          />
+        {cutout ? (
+          <>
+            {/* recorte sobre fondo parejo; al pasar el mouse aparece la foto real */}
+            <img
+              src={cutout}
+              alt={product.name}
+              loading="lazy"
+              className="absolute inset-0 m-auto h-[78%] w-[78%] object-contain drop-shadow-[0_18px_18px_rgba(21,23,28,0.18)] transition-all duration-500 ease-out group-hover:scale-[1.04] group-hover:opacity-0"
+            />
+            <img
+              src={product.imageUrl}
+              alt=""
+              loading="lazy"
+              className={`absolute inset-0 h-full w-full ${fit} opacity-0 transition-opacity duration-500 group-hover:opacity-100 ${isTech ? 'bg-white' : ''}`}
+            />
+          </>
+        ) : (
+          <>
+            <img
+              src={product.imageUrl}
+              alt={product.name}
+              loading="lazy"
+              className={`h-full w-full ${fit} transition-opacity duration-300 ${second ? 'group-hover:opacity-0' : ''}`}
+            />
+            {second && (
+              <img
+                src={second}
+                alt=""
+                loading="lazy"
+                className={`absolute inset-0 h-full w-full ${fit} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+              />
+            )}
+          </>
         )}
         {product.badge && badgeStyles[product.badge] && (
           <span className={`absolute left-2.5 top-2.5 rounded-full px-2.5 py-0.5 text-xs font-semibold ${badgeStyles[product.badge]}`}>

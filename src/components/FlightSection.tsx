@@ -79,7 +79,7 @@ export default function FlightSection() {
     <section className="bg-foreground text-background">
       {/* Escritorio: la sección queda fija mientras el avión cruza */}
       <div ref={wrapRef} className="relative hidden md:block" style={{ height: `${steps.length * 85 + 100}vh` }}>
-        <div className="sticky top-[78px] flex h-[calc(100vh-78px)] flex-col justify-center overflow-hidden py-6">
+        <div className="sticky top-[93px] flex h-[calc(100vh-93px)] flex-col justify-center overflow-hidden py-6">
           <div className="mx-auto w-full max-w-7xl px-4">
             <div className="flex items-end justify-between">
               <h2 className="font-display text-6xl font-black uppercase leading-none lg:text-7xl">Así viaja tu pedido</h2>
