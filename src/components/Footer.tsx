@@ -71,8 +71,12 @@ export default function Footer() {
             Importados MC
           </text>
         </svg>
+        <p className="max-w-3xl pb-6 text-xs leading-relaxed text-background/45">
+          Las marcas mencionadas pertenecen a sus respectivos propietarios. MC Importados comercializa productos
+          originales adquiridos a través de proveedores y retailers internacionales.
+        </p>
         <div className="flex flex-col gap-2 border-t border-background/10 py-6 text-xs text-background/45 sm:flex-row sm:justify-between">
-          <span>© {new Date().getFullYear()} Importados MC</span>
+          <span>© {new Date().getFullYear()} Importados MC. Todos los derechos reservados.</span>
           <span>Miami → Buenos Aires</span>
         </div>
       </div>

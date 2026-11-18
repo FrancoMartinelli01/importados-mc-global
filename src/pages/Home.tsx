@@ -7,6 +7,7 @@ import ProductCard from '@/components/ProductCard';
 import FlightSection from '@/components/FlightSection';
 import ServicesSection from '@/components/ServicesSection';
 import InstagramBand from '@/components/InstagramBand';
+import WhyChooseUs from '@/components/WhyChooseUs';
 import { PRODUCTS } from '@/data/products';
 
 export default function Home() {
@@ -38,7 +39,7 @@ export default function Home() {
 
       <ProductStory
         title="Tecnología original"
-        intro="Productos Apple sellados, comprados en Estados Unidos."
+        intro="Productos Apple originales y sellados."
         frames={{ dir: '/secuencias/tecnologia', count: 204 }}
         bg="#000"
         dark
@@ -51,7 +52,7 @@ export default function Home() {
       />
       <ProductStory
         title="Diesel, recién llegado"
-        intro="Ropa original de la marca, traída de Estados Unidos."
+        intro="Ropa original de la marca, de retailers de Estados Unidos."
         frames={{ dir: '/secuencias/ropa', count: 95 }}
         bg="#E5F3F8"
         length={240}
@@ -63,6 +64,7 @@ export default function Home() {
       />
       <FlightSection />
       <ServicesSection />
+      <WhyChooseUs />
       <InstagramBand />
     </>
   );

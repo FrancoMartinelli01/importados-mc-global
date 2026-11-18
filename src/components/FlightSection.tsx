@@ -9,14 +9,14 @@ const steps = [
     blend: true,
   },
   {
-    title: 'Lo compramos allá',
-    text: 'Lo compramos en Estados Unidos. Si no tenés un medio de pago internacional, lo pagamos nosotros por vos.',
+    title: 'Lo compramos por vos',
+    text: 'Lo compramos en retailers internacionales. Si no tenés medios de pago internacionales, podemos hacer el pago por vos.',
     img: '/AirPods-3taGen-2.jpeg',
     blend: true,
   },
   {
     title: 'Viaja desde Miami',
-    text: 'Sale de nuestra dirección en Miami rumbo a Argentina.',
+    text: 'Recibimos y armamos tu pedido en Miami, y sale rumbo a Argentina.',
     img: '/Campera-bomber-diesel-1.jpeg',
   },
   {

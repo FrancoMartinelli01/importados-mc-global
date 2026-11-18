@@ -4,22 +4,22 @@ const services = [
   {
     title: 'Personal shopper',
     icon: ShoppingBag,
-    text: 'Nos mandás lo que te gusta, lo buscamos, lo compramos y te lo llevamos a tu casa.',
+    text: 'Te ayudamos a encontrar productos exclusivos de Estados Unidos, los compramos por vos en retailers internacionales y te los llevamos a tu casa.',
     url: 'https://wa.me/541138086005?text=Hola%20Importados%20MC!%20Quiero%20usar%20el%20servicio%20de%20Personal%20Shopper.%20Les%20comparto%20el%20producto%20que%20estoy%20buscando.',
     cta: 'Pedir un producto',
   },
   {
-    title: 'Envíos a Argentina',
+    title: 'Importación y entrega en Argentina',
     icon: Truck,
-    text: 'Comprás vos en cualquier tienda de Estados Unidos, lo mandás a nuestra dirección en Miami y te lo traemos.',
+    text: 'Comprás online en cualquier tienda de Estados Unidos y nosotros nos encargamos de traerlo hasta tu casa.',
     url: 'https://wa.me/541138086005?text=Hola%20Importados%20MC!%20Quiero%20usar%20el%20servicio%20de%20env%C3%ADos%20desde%20Estados%20Unidos%20a%20Argentina.',
     cta: 'Consultar un envío',
   },
   {
-    title: 'Storage en Miami',
+    title: 'Recepción y armado de pedidos',
     icon: Archive,
-    text: 'Mandás tus compras a Miami y te las guardamos, a muy bajo costo, hasta que las necesites.',
-    url: 'https://wa.me/541138086005?text=Hola%20Importados%20MC!%20Quiero%20consultar%20precios%20del%20servicio%20de%20Storage%20en%20Miami.',
+    text: 'Recibimos y armamos tu pedido en Miami, y lo guardamos a muy bajo costo hasta que lo necesites.',
+    url: 'https://wa.me/541138086005?text=Hola%20Importados%20MC!%20Quiero%20consultar%20precios%20del%20servicio%20de%20recepci%C3%B3n%20y%20armado%20de%20pedidos%20en%20Miami.',
     cta: 'Ver precios',
   },
 ];

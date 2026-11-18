@@ -44,7 +44,7 @@ export default function Hero() {
             <br />a tu casa.
           </h1>
           <p className="mt-8 max-w-md text-lg leading-relaxed text-muted-foreground">
-            Ropa de marca y tecnología original, comprada en Estados Unidos y enviada a cualquier punto de Argentina.
+            Productos originales de tecnología, belleza y lifestyle, con envíos a todo el país.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link
