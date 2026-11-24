@@ -97,3 +97,13 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Muro de productos del hero */
+@keyframes wall-up {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+@keyframes wall-down {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(0); }
+}
