@@ -27,7 +27,7 @@ export default function Home() {
       <TapeStrip />
       <Showcase />
 
-      <section className="mx-auto max-w-7xl px-4 pt-16 md:pt-24">
+      <section className="mx-auto max-w-7xl overflow-x-clip px-4 pt-16 md:pt-24">
         <div className="mb-8 flex items-end justify-between gap-4">
           <h2 className="font-display text-5xl font-extrabold uppercase leading-none md:text-6xl">Recién llegados</h2>
           <Link to="/catalogo" className="shrink-0 pb-1 text-[15px] font-semibold underline decoration-tag decoration-[3px] underline-offset-4 hover:decoration-foreground">

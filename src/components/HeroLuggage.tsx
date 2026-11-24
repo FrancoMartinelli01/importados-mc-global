@@ -50,7 +50,7 @@ export default function HeroLuggage({ tag }: { tag: React.ReactNode }) {
   }, []);
 
   return (
-    <div ref={boxRef} className="relative mx-auto aspect-[1/1] w-full max-w-[420px] md:aspect-[4/5] md:max-w-none" style={{ '--mx': 0, '--my': 0 } as React.CSSProperties}>
+    <div ref={boxRef} className="relative mx-auto aspect-[1/1] w-full max-w-[420px] md:max-w-[min(560px,62vh)]" style={{ '--mx': 0, '--my': 0 } as React.CSSProperties}>
       {items.map((it, i) => {
         const p = PRODUCTS.find((x) => x.id === it.id);
         return (
@@ -82,11 +82,11 @@ export default function HeroLuggage({ tag }: { tag: React.ReactNode }) {
                   src={it.img}
                   alt=""
                   fetchPriority={i < 2 ? 'high' : 'auto'}
-                  className="w-full drop-shadow-[0_24px_24px_rgba(21,23,28,0.22)] transition-transform duration-300 group-hover:-translate-y-2"
+                  className="w-full drop-shadow-[0_28px_26px_rgba(0,8,70,0.45)] transition-transform duration-300 group-hover:-translate-y-2"
                   style={{ transform: `rotate(${it.rot}deg)` }}
                 />
                 {p && (
-                  <span className="pointer-events-none absolute left-1/2 top-full mt-1 -translate-x-1/2 whitespace-nowrap rounded-full bg-foreground px-3 py-1 text-xs font-semibold text-background opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+                  <span className="pointer-events-none absolute left-1/2 top-full mt-1 -translate-x-1/2 whitespace-nowrap rounded-full bg-white px-3 py-1 text-xs font-semibold text-foreground opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
                     {getShortName(p)}
                   </span>
                 )}
